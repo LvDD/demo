@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  */
 public class ReflectDemo {
     public static void main(String[] args) {
-        try {
+//        try {
 //            Dog dog = new Dog();
 //            Class clazz1 = dog.getClass();
 //            System.out.println(clazz1.getName());
@@ -21,23 +21,30 @@ public class ReflectDemo {
 //
 //            Class clazz4 = Class.forName("com.lvdong.test.Dog");
 //            System.out.println(clazz4.getName());
+//
+//            Class class_dog = Dog.class;
+//            Field[] fields = class_dog.getDeclaredFields();
+//            for (Field field : fields) {
+//                System.out.println(field.getName());
+//            }
+//            Method[] methods = class_dog.getDeclaredMethods();
+//            for (Method method : methods) {
+//                System.out.println(method);
+//                if (method.getName().equals("wangwang")) {
+//                    method.invoke(new Dog(),"呜");
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-            Class class_dog = Dog.class;
-            Field[] fields = class_dog.getDeclaredFields();
-            for (Field field : fields) {
-                System.out.println(field.getName());
-            }
-            Method[] methods = class_dog.getDeclaredMethods();
-            for (Method method : methods) {
-                System.out.println(method);
-                if (method.getName().equals("wangwang")) {
-                    method.invoke(new Dog(),"呜");
-                }
-            }
+        String s1 = new StringBuilder().append("ja").append("va").toString();
+        System.out.println(s1.intern() == s1);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String s2 = new StringBuilder().append("My").append("Test").toString();
+        System.out.println(s2.intern() == s2);
+
     }
 }
 class Cat {
