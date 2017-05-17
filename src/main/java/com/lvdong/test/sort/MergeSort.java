@@ -1,4 +1,4 @@
-package com.lvdong.test;
+package com.lvdong.test.sort;
 
 /**
  * 二路归并排序
@@ -6,20 +6,15 @@ package com.lvdong.test;
  */
 public class MergeSort {
     public static void main(String[] args) {
-        int[] data = new int[]{5, 3, 6, 2, 1, 9, 4, 8, 7};
-        print(data);
-        mergeSort(data);
-        System.out.println("排序后的数组：");
-        print(data);
-    }
-
-    private static void mergeSort(int[] data) {
+        int[] data = new int[]{5, 3, 6, 2, 1, 9, 4, 8, 7, -1, 4, 2, 1, 34, 5, 6, 9, -3, 6, 8, 7, 13, -4, -2, 4};
+        ArrayUtils.printArray(data);
         sort(data, 0, data.length - 1);
+        System.out.println("排序后的数组：");
+        ArrayUtils.printArray(data);
     }
 
     private static void sort(int[] data, int left, int right) {
-        if (left >= right)
-            return;
+        if (left >= right) return;
         // 找出中间索引
         int center = (left + right) / 2;
         // 对左边数组进行递归
@@ -28,7 +23,7 @@ public class MergeSort {
         sort(data, center + 1, right);
         // 合并
         merge(data, left, center, right);
-        print(data);
+//        ArrayUtils.printArray(data);
     }
 
     /**
@@ -57,23 +52,10 @@ public class MergeSort {
             }
         }
         // 剩余部分依次放入临时数组（实际上两个while只会执行其中一个）
-        while (mid <= right) {
-            tmpArr[third++] = data[mid++];
-        }
-        while (left <= center) {
-            tmpArr[third++] = data[left++];
-        }
+        while (mid <= right) tmpArr[third++] = data[mid++];
+        while (left <= center) tmpArr[third++] = data[left++];
         // 将临时数组中的内容拷贝回原数组中
         // （原left-right范围的内容被复制回原数组）
-        while (tmp <= right) {
-            data[tmp] = tmpArr[tmp++];
-        }
-    }
-
-    private static void print(int[] data) {
-        for (int aData : data) {
-            System.out.print(aData + "\t");
-        }
-        System.out.println();
+        while (tmp <= right) data[tmp] = tmpArr[tmp++];
     }
 }
